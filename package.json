@@ -1,6 +1,6 @@
 {
   "name": "mdc-iview",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "title": "iView",
   "description": "V2.9.2 fork / A high quality  UI components Library with Vue.js",
   "homepage": "http://www.iviewui.com",
@@ -44,7 +44,7 @@
     "deepmerge": "^1.5.2",
     "element-resize-detector": "^1.1.13",
     "lodash.throttle": "^4.1.1",
-    "popper.js": "^0.6.4",
+    "popper.js": "^1.14.1",
     "tinycolor2": "^1.4.1"
   },
   "peerDependencies": {

@@ -6,8 +6,15 @@
 
 # 更新日志
 > v1.0.1 - 样式修改
+
+
 > v1.0.2 - table增加minWidth maxWidth 修复table部分bug
+
+
 > v1.0.3 - tree组件新增children-key
+
+
+> v1.0.5 - Select、AutoComplete、DatePicker、TimePicker、ColorPicker、Cascader、Dropdown 等组件支持自动识别浮层展开方向。
 
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)

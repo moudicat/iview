@@ -17,10 +17,10 @@
                     v-show="filterable && query === ''"
                     @click="handleFocus">{{ displayRender }}</div>
                 <Icon type="ios-close" :class="[prefixCls + '-arrow']" v-show="showCloseIcon" @click.native.stop="clearSelect"></Icon>
-                <Icon type="ios-arrow-down" :class="[prefixCls + '-arrow']"></Icon>
+                <Icon type="arrow-down-b" :class="[prefixCls + '-arrow']"></Icon>
             </slot>
         </div>
-        <transition name="slide-up">
+        <transition name="transition-drop">
             <Drop
                 v-show="visible"
                 :class="{ [prefixCls + '-transfer']: transfer }"
@@ -62,10 +62,8 @@
     import { oneOf } from '../../utils/assist';
     import Emitter from '../../mixins/emitter';
     import Locale from '../../mixins/locale';
-
     const prefixCls = 'ivu-cascader';
     const selectPrefixCls = 'ivu-select';
-
     export default {
         name: 'Cascader',
         mixins: [ Emitter, Locale ],
@@ -172,7 +170,6 @@
                 for (let i = 0; i < this.selected.length; i++) {
                     label.push(this.selected[i].label);
                 }
-
                 return this.renderFormat(label, this.selected);
             },
             displayInputRender () {
@@ -202,7 +199,6 @@
                         let item = arr[i];
                         item.__label = label ? label + ' / ' + item.label : item.label;
                         item.__value = value ? value + ',' + item.value : item.value;
-
                         if (item.children && item.children.length) {
                             getSelections(item.children, item.__label, item.__value);
                             delete item.__label;
@@ -282,7 +278,6 @@
             },
             handleSelectItem (index) {
                 const item = this.querySelections[index];
-
                 if (item.item.disabled) return false;
                 this.query = '';
                 this.$refs.input.currentValue = '';
@@ -312,7 +307,6 @@
                     }
                     return new_item;
                 }
-
                 return data.map(item => deleteData(item));
             }
         },
@@ -324,16 +318,13 @@
                 const lastValue = params.lastValue;
                 const changeOnSelect = params.changeOnSelect;
                 const fromInit = params.fromInit;
-
                 if (lastValue || changeOnSelect) {
                     const oldVal = JSON.stringify(this.currentValue);
                     this.selected = this.tmpSelected;
-
                     let newVal = [];
                     this.selected.forEach((item) => {
                         newVal.push(item.value);
                     });
-
                     if (!fromInit) {
                         this.updatingValue = true;
                         this.currentValue = newVal;
@@ -357,6 +348,7 @@
                     if (this.transfer) {
                         this.$refs.drop.update();
                     }
+                    this.broadcast('Drop', 'on-update-popper');
                 } else {
                     if (this.filterable) {
                         this.query = '';
@@ -365,6 +357,7 @@
                     if (this.transfer) {
                         this.$refs.drop.destroy();
                     }
+                    this.broadcast('Drop', 'on-destroy-popper');
                 }
                 this.$emit('on-visible-change', val);
             },
