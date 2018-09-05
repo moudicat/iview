@@ -24,12 +24,14 @@
         user-select: none;
         cursor: pointer;
         font-family: Arial;
+        font-weight: 500;
         border: 1px solid @border-color-base;
         border-radius: @btn-border-radius;
         //transition: all @transition-time @ease-in-out;
         transition: border @transition-time @ease-in-out, color @transition-time @ease-in-out;
 
         a {
+            font-family: "Monospaced Number";
             margin: 0 6px;
             text-decoration: none;
             color: @text-color;
@@ -44,11 +46,11 @@
         }
 
         &-active {
-            background-color: @primary-color;
+            // background-color: @primary-color;
             border-color: @primary-color;
 
             a, &:hover a {
-                color: #fff;
+                color: @primary-color;
             }
         }
     }
@@ -107,6 +109,7 @@
     &-item-jump-next {
         display: inline-block;
         vertical-align: middle;
+        user-select: none;
         //float: left;
         min-width: @btn-circle-size;
         height: @btn-circle-size;
@@ -193,7 +196,7 @@
         margin: 0;
         border: 0;
         height: 24px;
-        line-height: 24px;
+        line-height: normal;
         font-size: 18px;
     }
 
@@ -201,6 +204,7 @@
         display: inline-block;
         //float: left;
         margin-right: 8px;
+        vertical-align: middle;
 
         input {
             width: 30px;
@@ -246,7 +250,7 @@
         margin: 0;
         min-width: @btn-circle-size-small;
         height: @btn-circle-size-small;
-        line-height: @btn-circle-size-small;
+        line-height: @btn-circle-size-small - 2px;
         border: 0;
 
         a {

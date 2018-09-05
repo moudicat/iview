@@ -2,7 +2,7 @@
     <Dropdown trigger="click" style="margin-left: 20px">
         <a href="javascript:void(0)">
             click 触发
-            <Icon type="arrow-down-b"></Icon>
+            <Icon type="ios-arrow-down"></Icon>
         </a>
         <DropdownMenu slot="list">
             <DropdownItem>驴打滚</DropdownItem>
