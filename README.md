@@ -4,6 +4,11 @@
     </a>
 </p>
 
+# 更新日志
+> v1.0.1 - 样式修改
+> v1.0.2 - table增加minWidth maxWidth 修复table部分bug
+> v1.0.3 - tree组件新增children-key
+
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)
 [![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://www.npmjs.org/package/iview)

@@ -17,11 +17,12 @@
                 <span v-else :class="titleClasses" @click="handleSelect">{{ data.title }}</span>
                 <Tree-node
                         v-if="data.expand"
-                        v-for="(item, i) in data.children"
+                        v-for="(item, i) in children"
                         :key="i"
                         :data="item"
                         :multiple="multiple"
-                        :show-checkbox="showCheckbox">
+                        :show-checkbox="showCheckbox"
+                        :children-key="childrenKey">
                 </Tree-node>
             </li>
         </ul>
@@ -34,9 +35,7 @@
     import CollapseTransition from '../base/collapse-transition';
     import Emitter from '../../mixins/emitter';
     import { findComponentUpward } from '../../utils/assist';
-
     const prefixCls = 'ivu-tree';
-
     export default {
         name: 'TreeNode',
         mixins: [ Emitter ],
@@ -51,6 +50,10 @@
             multiple: {
                 type: Boolean,
                 default: false
+            },
+            childrenKey: {
+                type: String,
+                default: 'children'
             },
             showCheckbox: {
                 type: Boolean,
@@ -93,7 +96,7 @@
                 ];
             },
             showArrow () {
-                return (this.data.children && this.data.children.length) || ('loading' in this.data && !this.data.loading);
+                return (this.data[this.childrenKey] && this.data[this.childrenKey].length) || ('loading' in this.data && !this.data.loading);
             },
             showLoading () {
                 return 'loading' in this.data && this.data.loading;
@@ -118,30 +121,31 @@
                 } else {
                     return [];
                 }
+            },
+            children () {
+                return this.data[this.childrenKey];
             }
         },
         methods: {
             handleExpand () {
                 const item = this.data;
                 if (item.disabled) return;
-
                 // async loading
-                if (item.children.length === 0) {
+                if (item[this.childrenKey].length === 0) {
                     const tree = findComponentUpward(this, 'Tree');
                     if (tree && tree.loadData) {
                         this.$set(this.data, 'loading', true);
                         tree.loadData(item, children => {
                             this.$set(this.data, 'loading', false);
                             if (children.length) {
-                                this.$set(this.data, 'children', children);
+                                this.$set(this.data, this.childrenKey, children);
                                 this.$nextTick(() => this.handleExpand());
                             }
                         });
                         return;
                     }
                 }
-
-                if (item.children && item.children.length) {
+                if (item[this.childrenKey] && item[this.childrenKey].length) {
                     this.$set(this.data, 'expand', !this.data.expand);
                     this.dispatch('Tree', 'toggle-expand', this.data);
                 }

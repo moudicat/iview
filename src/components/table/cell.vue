@@ -1,6 +1,6 @@
 <template>
     <div :class="classes" ref="cell">
-        <template v-if="renderType === 'index'">{{naturalIndex + 1}}</template>
+        <template v-if="renderType === 'index'"><span>{{naturalIndex + 1}}</span></template>
         <template v-if="renderType === 'selection'">
             <Checkbox :value="checked" @click.native.stop="handleClick" @on-change="toggleSelect" :disabled="disabled"></Checkbox>
         </template>
@@ -23,7 +23,6 @@
     import Cell from './expand';
     import Icon from '../icon/icon.vue';
     import Checkbox from '../checkbox/checkbox.vue';
-
     export default {
         name: 'TableCell',
         components: { Icon, Checkbox, Cell },
