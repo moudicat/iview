@@ -66,7 +66,7 @@ table {
                         <!-- <Table border  :columns="columns1" height="500" :data="data1"></Table> -->
                         <!-- <br> -->
                         <!-- <Table border :columns="columns5" :data="data5"></Table> -->
-                        <Table border :columns="columns8"  height="240" :data="data7"></Table>
+                        <Table border :columns="columns4" @on-select="handleSelect" @on-select-all="handleAll" @on-cancel-select-all="handleCancelAll" @on-selection-change="handleSelectionChange" height="240" :data="data4"></Table>
                     </Content>
                     <Footer>sdfsdsdfsdfs</Footer>
                 </Layout>
@@ -248,6 +248,25 @@ table {
                     }
                 ],
                 data1: [],
+                 columns4: [
+                    {
+                        type: 'selection',
+                        width: 60,
+                        align: 'center'
+                    },
+                    {
+                        title: 'Name',
+                        key: 'name'
+                    },
+                    {
+                        title: 'Age',
+                        key: 'age'
+                    },
+                    {
+                        title: 'Address',
+                        key: 'address'
+                    }
+                ],
                 data4: [
                     {
                         name: 'John Brown',
@@ -520,6 +539,18 @@ table {
             },
             changed (res) {
                 console.log(res)
+            },
+            handleSelect(a,b,c) {
+                console.log('select', a, b, c);
+            },
+            handleAll(a,b,c) {
+                console.log('select-all', a,b,c);
+            },
+            handleCancelAll(a,b,c) {
+                console.log('cancelAll', a,b,c);
+            },
+            handleSelectionChange(a,b,c) {
+                console.log('selectionChange', a,b,c);
             }
         },
         watch: {

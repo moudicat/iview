@@ -529,6 +529,8 @@
                 const selection = this.getSelection();
                 if (status) {
                     this.$emit('on-select-all', selection);
+                } else {
+                    this.$emit('on-cancel-all');
                 }
                 this.$emit('on-selection-change', selection);
             },

@@ -18,6 +18,8 @@
 
 > v1.0.6 - 修复 Poptip / Tooltip 动态修改内容后，位置计算不准确的 bug  修复 Poptip 和 Tooltip 有时方向识别错误的 bug，并支持自定义 popper.js 的 options 选项 Poptip 新增属性 popper-class。
 
+> v1.0.7 - table 新增on-cancel-select事件（取消全选）
+
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)
 [![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://www.npmjs.org/package/iview)
