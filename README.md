@@ -20,6 +20,8 @@
 
 > v1.0.7 - table 新增on-cancel-select事件（取消全选）
 
+> v1.0.8 - tree组件新增title-key 及getCheckedNodesWithoutChildrenNodes方法 用以获取选中的最大的集合
+
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)
 [![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://www.npmjs.org/package/iview)

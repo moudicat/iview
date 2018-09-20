@@ -7,6 +7,7 @@
             visible
             :multiple="multiple"
             :show-checkbox="showCheckbox"
+            :title-key="titleKey"
             :children-key="childrenKey">
         </Tree-node>
         <div :class="[prefixCls + '-empty']" v-if="!stateTree.length">{{ localeEmptyText }}</div>
@@ -38,6 +39,10 @@
             },
             emptyText: {
                 type: String
+            },
+            titleKey: {
+                type: String,
+                default: 'title'
             },
             childrenKey: {
                 type: String,
@@ -134,6 +139,22 @@
             getCheckedNodes () {
                 /* public API */
                 return this.flatState.filter(obj => obj.node.checked).map(obj => obj.node);
+            },
+            getCheckedNodesWithoutChildrenNodes() {
+                /* public API */
+                /*    By moudicat 20180920   */
+                let nodes = [];
+                const findFirstCheckNode = (obj) => {
+                    if (obj.checked) {
+                        return nodes.push(obj);
+                    } else if (obj[this.childrenKey]) {
+                        if (obj[this.childrenKey] instanceof Array) {
+                            obj[this.childrenKey].forEach(findFirstCheckNode);
+                        }
+                    }
+                }
+                this.stateTree.forEach(findFirstCheckNode);
+                return nodes;
             },
             updateTreeDown(node, changes = {}) {
                 for (let key in changes) {

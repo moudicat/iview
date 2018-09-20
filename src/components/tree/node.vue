@@ -14,7 +14,7 @@
                         @click.native.prevent="handleCheck"></Checkbox>
                 <Render v-if="data.render" :render="data.render" :data="data" :node="node"></Render>
                 <Render v-else-if="isParentRender" :render="parentRender" :data="data" :node="node"></Render>
-                <span v-else :class="titleClasses" @click="handleSelect">{{ data.title }}</span>
+                <span v-else :class="titleClasses" @click="handleSelect">{{ data[titleKey] }}</span>
                 <Tree-node
                         v-if="data.expand"
                         v-for="(item, i) in children"
@@ -22,6 +22,7 @@
                         :data="item"
                         :multiple="multiple"
                         :show-checkbox="showCheckbox"
+                        :title-key="titleKey"
                         :children-key="childrenKey">
                 </Tree-node>
             </li>
@@ -50,6 +51,10 @@
             multiple: {
                 type: Boolean,
                 default: false
+            },
+            titleKey: {
+                type: String,
+                default: 'title'
             },
             childrenKey: {
                 type: String,

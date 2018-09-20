@@ -202,7 +202,8 @@
 <template>
     <div>
         {{ data1 }}
-        <Tree :data="data1"></Tree>
+        <div style="width: 100px;height: 100px; background: red;" @click="cccc"></div>
+        <Tree :data="data1" show-checkbox title-key="name" ref="tree"></Tree>
     </div>
 </template>
 <script>
@@ -211,30 +212,30 @@
             return {
                 data1: [
                     {
-                        title: 'parent 1',
+                        name: 'parent 1',
                         expand: true,
                         children: [
                             {
-                                title: 'parent 1-1',
+                                name: 'parent 1-1',
                                 expand: true,
                                 children: [
                                     {
-                                        title: 'leaf 1-1-1'
+                                        name: 'leaf 1-1-1'
                                     },
                                     {
-                                        title: 'leaf 1-1-2'
+                                        name: 'leaf 1-1-2'
                                     }
                                 ]
                             },
                             {
-                                title: 'parent 1-2',
+                                name: 'parent 1-2',
                                 expand: true,
                                 children: [
                                     {
-                                        title: 'leaf 1-2-1'
+                                        name: 'leaf 1-2-1'
                                     },
                                     {
-                                        title: 'leaf 1-2-1'
+                                        name: 'leaf 1-2-1'
                                     }
                                 ]
                             }
@@ -242,6 +243,12 @@
                     }
                 ]
             }
+        },
+        methods: {
+            cccc() {
+                console.log(this.$refs.tree.getCheckedNodes())
+                console.log(this.$refs.tree.getCheckedNodesWithoutChildrenNodes());
+            }   
         }
     }
 </script>
