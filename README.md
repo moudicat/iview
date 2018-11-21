@@ -22,6 +22,8 @@
 
 > v1.0.8 - tree组件新增title-key 及getCheckedNodesWithoutChildrenNodes方法 用以获取选中的最大的集合
 
+> v1.0.9 - table 新增拼音排序功能 在对应的栏上加 `sortable: 'pinyin'`
+
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)
 [![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://www.npmjs.org/package/iview)
