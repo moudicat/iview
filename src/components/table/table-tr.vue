@@ -1,5 +1,5 @@
 <template>
-    <tr :class="rowClasses(row._index)"><slot></slot></tr>
+    <tr :class="rowClasses(row._index)" v-if="!row._hidden"><slot></slot></tr>
 </template>
 <script>
     export default {

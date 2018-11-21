@@ -1,5 +1,8 @@
 <template>
-    <Table width="550" border :columns="columns2" :data="data3"></Table>
+  <div>
+    <Button @click="handlecc">aaaaa</Button>
+    <Table ref="table" width="750" border :columns="columns2" :data="data3"></Table>
+  </div>
 </template>
 <script>
 export default {
@@ -8,10 +11,15 @@ export default {
     return {
       columns2: [
         {
+          type: 'selection',
+          width: 60,
+          align: 'left',
+          sortable: true
+        },
+        {
           title: '姓名',
           key: 'name',
           width: 100,
-          fixed: 'left',
           sortable: 'pinyin'
         },
         {
@@ -114,6 +122,11 @@ export default {
   },
   mounted() {
     console.log(1);
+  },
+  methods: {
+    handlecc() {
+      this.$refs.table.selectedFixToTop();
+    }
   }
 };
 </script>

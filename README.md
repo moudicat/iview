@@ -24,6 +24,8 @@
 
 > v1.0.9 - table 新增拼音排序功能 在对应的栏上加 `sortable: 'pinyin'`
 
+> v1.0.10 - table组件新增`selectedFixToTop`方法，能够使被选中的置顶， 新增`_hidden`属性。
+
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)
 [![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://www.npmjs.org/package/iview)
