@@ -644,19 +644,19 @@ export default {
       });
       return data;
     },
-    sortSelectData(data, type, index, currentSelect) {
+    sortSelectData(data, type, index, currentSelect, ukey) {
       data.sort((a, b) => {
-        const ad = currentSelect.includes(a.name) ? 1 : -1;
-        const bd = currentSelect.includes(b.name) ? 1 : -1;
+        const ad = currentSelect.includes(a[ukey]) ? 1 : -1;
+        const bd = currentSelect.includes(b[ukey]) ? 1 : -1;
 
         return ad === bd ? 0 : ad > bd ? -1 : 1;
       });
       return data;
     },
-    selectedFixToTop() {
-      this.handleSort(0, 'select');
+    selectedFixToTop(ukey) {
+      this.handleSort(0, 'select', ukey);
     },
-    handleSort(_index, type) {
+    handleSort(_index, type, ukey) {
       const index = this.GetOriginalIndex(_index);
       this.cloneColumns.forEach(col => (col._sortType = 'normal'));
       const key = this.cloneColumns[index].key;
@@ -666,8 +666,8 @@ export default {
         if (type === 'normal') {
           this.rebuildData = this.makeDataWithFilter();
         } if (type.includes('select')) {
-          const currentSelect = this.getSelection().map(e => e.name)
-          this.rebuildData = this.sortSelectData(this.rebuildData, type, index, currentSelect);
+          const currentSelect = this.getSelection().map(e => e[ukey])
+          this.rebuildData = this.sortSelectData(this.rebuildData, type, index, currentSelect, ukey);
         } else {
           this.rebuildData = this.sortData(this.rebuildData, type, index, this.cloneColumns[index].sortable === 'pinyin');
         }

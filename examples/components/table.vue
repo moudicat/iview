@@ -125,7 +125,7 @@ export default {
   },
   methods: {
     handlecc() {
-      this.$refs.table.selectedFixToTop();
+      this.$refs.table.selectedFixToTop('name');
     }
   }
 };
