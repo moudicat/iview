@@ -198,7 +198,8 @@ export default {
       showVerticalScrollBar: false,
       showHorizontalScrollBar: false,
       headerWidth: 0,
-      headerHeight: 0
+      headerHeight: 0,
+      isWatch: true
     };
   },
   computed: {
@@ -876,6 +877,12 @@ export default {
       const data = Csv(columns, datas, params, noHeader);
       if (params.callback) params.callback(data);
       else ExportCsv.download(params.filename, data);
+    },
+    stopWatch() {
+      this.isWatch = false;
+    },
+    startWatch() {
+      this.isWatch = true;
     }
   },
   created() {
@@ -904,16 +911,20 @@ export default {
     data: {
       handler() {
         const oldDataLen = this.rebuildData.length;
-        this.objData = this.makeObjData();
-        this.rebuildData = this.makeDataWithSortAndFilter();
-        this.handleResize();
-        if (!oldDataLen) {
-          this.fixedHeader();
+        if (this.isWatch) {
+          this.objData = this.makeObjData();
         }
-        // here will trigger before clickCurrentRow, so use async
-        setTimeout(() => {
-          this.cloneData = deepCopy(this.data);
-        }, 0);
+        this.rebuildData = this.makeDataWithSortAndFilter();
+        if (this.isWatch) {
+          this.handleResize();
+          if (!oldDataLen) {
+            this.fixedHeader();
+          }
+          // here will trigger before clickCurrentRow, so use async
+          setTimeout(() => {
+            this.cloneData = deepCopy(this.data);
+          }, 0);
+        }
       },
       deep: true
     },

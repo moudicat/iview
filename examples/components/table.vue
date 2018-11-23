@@ -1,6 +1,9 @@
 <template>
   <div>
     <Button @click="handlecc">aaaaa</Button>
+    <Button @click="handlehh">hhhhh</Button>
+    <Button @click="handleaa">ccccc</Button>
+
     <Table ref="table" width="750" border :columns="columns2" :data="data3"></Table>
   </div>
 </template>
@@ -126,7 +129,14 @@ export default {
   methods: {
     handlecc() {
       this.$refs.table.selectedFixToTop('name');
+    },
+    handlehh() {
+      this.$refs.table.stopWatch();
+      this.$set(this.data3[2], '_hidden', true);
+    },
+    handleaa() {
+      this.$set(this.data3[2], '_hidden', false);
     }
-  }
+  } 
 };
 </script>

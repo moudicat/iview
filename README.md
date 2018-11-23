@@ -26,6 +26,8 @@
 
 > v1.0.10 - table组件新增`selectedFixToTop`方法，能够使被选中的置顶， 新增`_hidden`属性。
 
+> v1.0.13 - table组件新增`stopWatch` `startWatch`方法 改变原list不刷新列表
+
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)
 [![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://www.npmjs.org/package/iview)
