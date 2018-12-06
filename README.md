@@ -28,6 +28,8 @@
 
 > v1.0.13 - table组件新增`stopWatch` `startWatch`方法 改变原list不刷新列表
 
+> v1.0.14 - table表头新增`_hidden`属性，可以控制显示隐藏此列
+
 # iView
 [![](https://img.shields.io/travis/iview/iview.svg?style=flat-square)](https://travis-ci.org/iview/iview)
 [![iView](https://img.shields.io/npm/v/iview.svg?style=flat-square)](https://www.npmjs.org/package/iview)

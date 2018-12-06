@@ -28,6 +28,7 @@ export default {
         {
           title: '年龄',
           key: 'age',
+          _hidden: true,
           width: 100
         },
         {

@@ -821,6 +821,7 @@ export default {
       let right = [];
       let center = [];
       columns.forEach((column, index) => {
+        if (column._hidden) return;
         column._index = index;
         column._columnKey = columnKey++;
         column._width = column.width ? column.width : ''; // update in handleResize()
